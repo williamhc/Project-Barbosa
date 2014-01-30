@@ -17,6 +17,7 @@ var expressValidator = require('express-validator');
 
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
+var tripController = require('./controllers/trip');
 
 /**
  * API keys + Passport configuration.
@@ -75,11 +76,15 @@ app.use(express.errorHandler());
  */
 
 app.get('/', homeController.index);
+
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
+
+app.get('/trip/create', tripController.create);
+
 app.get('/account', passportConf.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConf.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
