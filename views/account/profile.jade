@@ -86,8 +86,3 @@ block content
     p: a.text-danger(href='/account/unlink/twitter') Unlink your Twitter account
   else
     p: a(href='/auth/twitter') Link your Twitter account
-
-  if user.github
-    p: a.text-danger(href='/account/unlink/github') Unlink your GitHub account
-  else
-    p: a(href='/auth/github') Link your GitHub account
