@@ -18,7 +18,8 @@ Project-Barbosa
 Now you should be good to go!
 
 ### Tips
-node-inspector
+node-inspector can be used as a debugger, make sure to use the debug flag
+'nodemon --debug app.js' Then in a new terminal run 'node-inspector' to start the debugger and open the link provided by the terminal to view the debugger. It should be a webpage with the Inspector from Chrome.
 ____
 
 ![Alt](https://lh4.googleusercontent.com/-PVw-ZUM9vV8/UuWeH51os0I/AAAAAAAAD6M/0Ikg7viJftQ/w1286-h566-no/hackathon-starter-logo.jpg)
