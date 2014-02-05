@@ -11,7 +11,7 @@ Project-Barbosa
 4. Install [nodemon](http://nodemon.io/) (automatically reloads the node app when you save changes to a file)
 `npm install -g nodemon`
 5. Install node-insepctor to help with debugging
-`npm install node-inspector`
+`npm install -g node-inspector`
 6. To test the app: Start the Node Server (with nodemon) `nodemon app.js`
 7. To test the app: Go to the site that Node says it's running on (default 3000) `localhost:3000`
 
