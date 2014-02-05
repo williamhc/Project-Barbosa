@@ -1,3 +1,26 @@
+Project-Barbosa
+===============
+
+####Installation:
+
+1. Clone the git repo
+2. Install [Node.js](http://nodejs.org/)
+3. Install all the modules necessary
+⋅⋅* run the following command from the project directory to install all the necessary modules
+`npm install`
+4. Install [nodemon](http://nodemon.io/) (automatically reloads the node app when you save changes to a file)
+`npm install -g nodemon`
+5. Install node-insepctor to help with debugging
+`npm install node-inspector`
+6. To test the app: Start the Node Server (with nodemon) `nodemon app.js`
+7. To test the app: Go to the site that Node says it's running on (default 3000) `localhost:3000`
+
+Now you should be good to go!
+
+### Tips
+node-inspector
+____
+
 ![Alt](https://lh4.googleusercontent.com/-PVw-ZUM9vV8/UuWeH51os0I/AAAAAAAAD6M/0Ikg7viJftQ/w1286-h566-no/hackathon-starter-logo.jpg)
 Hackathon Starter [![Dependency Status](https://david-dm.org/sahat/hackathon-starter.png?theme=shields.io)](https://david-dm.org/sahat/hackathon-starter)
 =================
