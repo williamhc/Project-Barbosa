@@ -1,5 +1,10 @@
 extends ../layout
 
 block content
-
-  h1 Create your new trip
+  form(method='POST')
+    legend Create your new trip
+    .form-group
+      label.control-label(for='tripname') Trip Name
+      input.form-control(type='text', name='tripname', id='tripname', autofocus=true)
+    .form-group
+      button.btn.btn-primary(type='submit') Create
