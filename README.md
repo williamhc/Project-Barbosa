@@ -1,6 +1,20 @@
 Project-Barbosa
 ===============
 
+####High-level Project Architecture
+
+_Front-end:_ Ember.js (coming soon...), Bootstrap, Jade
+_Server:_ express.js on node.js (running on [heroku](comp-4350.herokuapp.com))
+_Database:_ MongoDB via the Mongoose Node Package
+
+_iOS:_ XCode and as many CocoPods as possible (will be a seperate repo)
+
+####High-level Data Architecture
+
+**Users:** name, email, password (salted + hashed)
+**Trips:** owner, title, description, start date, ratings, reviews, collaborators, itinerary items
+**Itinerary Items:** location, title, description, comments, date, time
+
 ####Installation:
 
 1. Clone the git repo
