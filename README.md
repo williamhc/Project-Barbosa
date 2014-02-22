@@ -35,6 +35,17 @@ _Itinerary Items:_ location, title, description, comments, date, time
 
 Now you should be good to go!
 
+###Additional Installation For Windows 7/8:
+
+1. Needs Python v2.7.x (and make sure directory is added to path) - http://www.python.org/download/releases/2.7.3/#download
+2. Visual Studio C++ 2012 Express (Recommended) - http://go.microsoft.com/?linkid=9816758
+3. Install Win32/64 OpenSSL (Non-Light Version) -http://slproweb.com/products/Win32OpenSSL.html
+	-Must be installed to default directory location of C:\OpenSSL-Win32 (or 64)
+	-When installing OpenSSL, you must tell it to put DLLs in  The Windows system directory  to avoid  The specified module could not be found.  errors.
+	-Add C:\OpenSSL-Win32 (or 64) to the path.
+
+
+
 ### Tips
 node-inspector can be used as a debugger, make sure to use the debug flag
 'nodemon --debug app.js' Then in a new terminal run 'node-inspector' to start the debugger and open the link provided by the terminal to view the debugger. It should be a webpage with the Inspector from Chrome.
