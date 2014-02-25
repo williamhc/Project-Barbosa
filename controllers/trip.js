@@ -15,12 +15,11 @@ exports.load = function(req, res, next, id){
 }
 
 /**
- * GET /trip/:id
+ * GET /trips/:id
  * Get a trip!
  */
 
 exports.showTrip = function(req, res) {
-  var ObjectId = mongoose.Types.ObjectId;
   var Trip = mongoose.model('Trip');
   Trip.findById(req.params.tripid).exec(function(err, trips) {
             if (err) {
@@ -34,18 +33,18 @@ exports.showTrip = function(req, res) {
 };
 
 /**
- * GET /trip/create
+ * GET /trips/create
  * Show the new trip page.
  */
 
 exports.renderCreate = function(req, res) {
-  res.render('trip/create', {
+  res.render('trips/create', {
     title: 'Create new Trip'
   });
 };
 
 /**
- * POST /trip/create
+ * POST /trips/create
  * Create a new trip!
  */
 

@@ -83,9 +83,9 @@ app.get('/logout', userController.logout);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 
-app.get('/trip/create', tripController.renderCreate);
-app.post('/trip/create', tripController.createTrip);
-app.get('/trip/:tripid', tripController.showTrip);
+app.get('/trips/create', tripController.renderCreate);
+app.post('/trips/create', tripController.createTrip);
+app.get('/trips/:tripid', tripController.showTrip);
 
 app.get('/account', passportConf.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConf.isAuthenticated, userController.postUpdateProfile);
