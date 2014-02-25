@@ -49,4 +49,3 @@ Now you should be good to go!
 ### Tips
 node-inspector can be used as a debugger, make sure to use the debug flag
 'nodemon --debug app.js' Then in a new terminal run 'node-inspector' to start the debugger and open the link provided by the terminal to view the debugger. It should be a webpage with the Inspector from Chrome.
-Casey Test
