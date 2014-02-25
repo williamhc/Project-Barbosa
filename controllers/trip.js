@@ -20,11 +20,16 @@ exports.load = function(req, res, next, id){
  */
 
 exports.showTrip = function(req, res) {
-  trip = req.trip
-  res.render('trip/show', {
-    title: trip.name + " " + trip.id,
-    trip: trip
-  })
+  var Trip = mongoose.model('Trip');
+  Trip.findById(req.params.tripid).exec(function(err, trips) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.json(trips);
+            }
+        });
 };
 
 /**
@@ -33,7 +38,7 @@ exports.showTrip = function(req, res) {
  */
 
 exports.renderCreate = function(req, res) {
-  res.render('trip/create', {
+  res.render('trips/create', {
     title: 'Create new Trip'
   });
 };
@@ -47,8 +52,8 @@ exports.createTrip = function(req, res) {
   trip = new Trip({
     name: req.body.tripname
   })
-  res.render('trip/show', {
-    title: trip.name + " " + trip.id,
-    trip: trip
-  })
+  trip.save(function(err, trip){
+    if(err) return console.error(err);
+  });
+  res.json(trip)
 };
