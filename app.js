@@ -39,6 +39,7 @@ mongoose.connection.on('error', function() {
 });
 
 var app = express();
+module.exports = app;
 
 /**
  * Express configuration.
@@ -67,6 +68,7 @@ app.use(less({ src: __dirname + '/public', compress: true }));
 app.use(app.router);
 app.use(express.static( path.join(__dirname, 'public'), { maxAge: 864000000 } ));
 app.use(function(req, res) {
+	res.status(404);
   res.render('404', { status: 404 });
 });
 app.use(express.errorHandler());
