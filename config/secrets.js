@@ -1,5 +1,5 @@
 module.exports = {
-  db: 'localhost/barbosa',
+  db: process.env.MONGOLAB_URI || 'localhost/barbosa',
 
   facebook: {
     clientID: '1453279814895954',
