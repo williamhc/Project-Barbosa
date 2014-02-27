@@ -30,10 +30,19 @@ _Itinerary Items:_ location, title, description, comments, date, time
 `npm install -g nodemon`
 5. Install node-insepctor to help with debugging
 `npm install -g node-inspector`
-6. To test the app: Start the Node Server (with nodemon) `nodemon app.js`
-7. To test the app: Go to the site that Node says it's running on (default 3000) `localhost:3000`
 
-Now you should be good to go!
+#### Running and Testing
+Start the Node Server (with nodemon) `npm start`
+Go to the site that Node says it's running on (default 3000) `localhost:3000`
+
+To run tests use `npm test` to run the mocha tests.
+protip: Use `mocha --reporter landing` to have a fun looking reporter.
+
+#### New Libraries used:
+* [Mocha](http://visionmedia.github.io/mocha/) for running automated tests.
+* [Should.js](https://github.com/visionmedia/should.js) for nice assertions.
+* [Supertest](https://github.com/visionmedia/supertest) for doing the request tests.
+
 
 ###Additional Installation For Windows 7/8:
 
