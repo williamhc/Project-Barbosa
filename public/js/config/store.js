@@ -1,9 +1,15 @@
-// by default, persist application data to localStorage.
-require('../vendor/localstorage_adapter');
+window.CustomMongoAdapter = DS.RESTAdapter.extend({
+  serializer: DS.RESTSerializer.extend({
+    serializeId: function(id) {
+      return id.toString();
+    },
+    primaryKey: function(type) {
+      return "_id";
+    }
+  })
+});
 
 module.exports = DS.Store.extend({
-  revision: 11,
-  //adapter: DS.RESTAdapter.create()
-  adapter: DS.LSAdapter.create()
+  adapter: 'window.CustomMongoAdapter'
 });
 
