@@ -1,0 +1,11 @@
+{{#linkTo "trips"}}← All Trips{{/linkTo}}
+
+<h2>{{ name }}</h2>
+
+<p>
+  <b> id:</b> {{ id }}
+</p>
+
+{{#linkTo "edit_trip" model}}Edit{{/linkTo}}
+|
+<a href="#" {{action "destroy"}}>Destroy</a>
