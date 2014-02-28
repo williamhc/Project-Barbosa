@@ -32,8 +32,10 @@ _Itinerary Items:_ location, title, description, comments, date, time
 `npm install -g node-inspector`
 
 #### Running and Testing
-Start the Node Server (with nodemon) `npm start`
-Go to the site that Node says it's running on (default 3000) `localhost:3000`
+1. Start the Node Server (with nodemon) `npm start`
+2. Start mongo `mongod`
+3. Watch ember files for changing `ember build -w`
+4. Go to the site that Node says it's running on (default 3000) `localhost:3000`
 
 To run tests use `npm test` to run the mocha tests.
 protip: Use `mocha --reporter landing` to have a fun looking reporter.
@@ -42,6 +44,7 @@ protip: Use `mocha --reporter landing` to have a fun looking reporter.
 * [Mocha](http://visionmedia.github.io/mocha/) for running automated tests.
 * [Should.js](https://github.com/visionmedia/should.js) for nice assertions.
 * [Supertest](https://github.com/visionmedia/supertest) for doing the request tests.
+* [Ember-tools](https://github.com/rpflorence/ember-tools) for building `application.js` and for awesome [generators](https://github.com/rpflorence/ember-tools#generators).
 
 
 ###Additional Installation For Windows 7/8:
