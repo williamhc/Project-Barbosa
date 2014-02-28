@@ -8,12 +8,12 @@ describe('GET /trips/:badid', function(){
 	it('should return json with a 500 error');
 })
 
-describe('POST /trips/create', function(){
+describe('POST /trips', function(){
 	
 	it('should respond with json', function(done){
 		request(app)
-			.post('/trips/create')
-			.send({tripname: "TESTTRIP"})
+			.post('/trips')
+			.send({"Trip":{"test": "TESTTRIP"}})
 			.set('Accept','application/json')
 			.expect('Content-Type', /json/)
 			.expect(200, done);
