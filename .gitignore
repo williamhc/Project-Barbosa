@@ -21,3 +21,5 @@ node_modules
 Thumbs.db
 
 public/vendor
+public/js/application.js
+public/css/styles.css
