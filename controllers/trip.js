@@ -89,7 +89,7 @@ exports.renderCreate = function(req, res) {
 };
 
 /**
- * POST /trips/create
+ * POST /trips
  * Create a new trip!
  */
 

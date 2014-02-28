@@ -13,7 +13,7 @@ describe('POST /trips', function(){
 	it('should respond with json', function(done){
 		request(app)
 			.post('/trips')
-			.send({"Trip":{"test": "TESTTRIP"}})
+			.send({trip:{name: "TEST_TRIP"}})
 			.set('Accept','application/json')
 			.expect('Content-Type', /json/)
 			.expect(200, done);
