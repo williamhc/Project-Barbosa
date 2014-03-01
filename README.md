@@ -26,7 +26,7 @@ Note: You may need to sudo npm install commands that use the -g flag.
 # Running and Testing
 
 ##Run app
-1. Start the Node Server `npm start` (uses `nodemon app.js && ember build` so we don't have to worry about using multiple commands. However for debugging you may want to manually use `node-inspector app.js && ember build -w`)
+1. Start the Node Server `npm start` (uses `ember build && nodemon app.js` so we don't have to worry about using multiple commands. However for debugging you may want to manually use `node-inspector app.js` with `ember build -w`)
 2. Start mongo `mongod`
 3. Go to the site that Node says it's running. Default: `localhost:3000`
 
