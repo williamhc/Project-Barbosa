@@ -44,7 +44,7 @@
     "ember-tools": "~0.2.8"
   },
   "scripts": {
-    "start": "nodemon app.js && ember build",
+    "start": "ember build && nodemon app.js",
     "test": "mocha"
   }
 }
