@@ -11,6 +11,7 @@ Note: You may need to sudo npm install commands that use the -g flag.
 3. Install all the modules necessary with `npm install`. This reads the [package.json](package.json) file and downloads everything necessary.
 4. Install [nodemon](http://nodemon.io/) with `npm install -g nodemon`. This automatically reloads the node app when you save changes to a file.
 5. Install [Ember-tools](https://github.com/rpflorence/ember-tools) with `npm install -g ember-tools` for building `application.js` (i.e. Make the Ember webpage appear).
+6. Install [MongoDB](http://docs.mongodb.org/manual/installation/) using the appropriate guide.
 6. Install [node-inspector](https://github.com/node-inspector/node-inspector) to help with debugging (optional). Cmd: `npm install -g node-inspector`
 
 ###Additional Installation For Windows 7/8:
@@ -25,10 +26,9 @@ Note: You may need to sudo npm install commands that use the -g flag.
 # Running and Testing
 
 ##Run app
-1. Start the Node Server (with nodemon) `npm start` or `nodemon app.js`
+1. Start the Node Server `npm start` (uses `nodemon app.js && ember build` so we don't have to worry about using multiple commands. However for debugging you may want to manually use `node-inspector app.js && ember build`)
 2. Start mongo `mongod`
-3. Watch ember files for changing `ember build -w` (On your first time run `ember build`)
-4. Go to the site that Node says it's running. Default: `localhost:3000`
+3. Go to the site that Node says it's running. Default: `localhost:3000`
 
 ##Run tests
 Run the command `npm test` to run the mocha tests.
