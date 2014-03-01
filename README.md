@@ -1,6 +1,6 @@
 Project-Barbosa
 ===============
-[Live Demo](http://project-barbosa.herokuapp.com/)
+[Live Demo/Production server](http://project-barbosa.herokuapp.com/)
 
 #Installation:
 
@@ -36,6 +36,7 @@ Run the command `npm test` to run the mocha tests.
 _Note_: "Pending" tests simply have a stub and need to be filled out. Normally working as intended, but still check the code.
 
 ## Tips
+* The Mongo DB name is `barbosa` accessible at `localhost/barbosa` (configured in config/secrets.js)
 * Protip: Use `mocha --reporter landing` to have a fun looking reporter.
 * Node-inspector can be used as a debugger, make sure to use the debug flag
 'nodemon --debug app.js' Then in a new terminal run 'node-inspector' to start the debugger and open the link provided by the terminal to view the debugger. It should be a webpage with the Inspector from Chrome.
@@ -76,6 +77,15 @@ We are following a [Feature Branch Workflow](https://www.atlassian.com/git/workf
 * [Ember-tools](https://github.com/rpflorence/ember-tools) for building `application.js` and for awesome [generators](https://github.com/rpflorence/ember-tools#generators).
 
 ##Architecture
+
+## File Structure
+* [package.json](package.json) contains all the package dependency information for the project. `npm install` looks at this to figure out what to download/install.
+* [app.js](app.js) is what runs on the server, it's the Node.js/Express.js servercode. If you need to setup a new route
+* [index.html](index.html) is the actual HTML file that gets served up and loads Ember.
+* The controllers folder contains controllers. These handle the functionality when you visit a route (e.g. make a GET request to /trips)
+* The models folder contains models which define the DB Schema (eg: [Trip.js](models/Trips.js))
+* The test folder contains the tests which are run if you type `npm test`
+
 ####High-level Project Architecture
 
 _Front-end:_ Ember.js (coming soon...), Bootstrap, Jade
