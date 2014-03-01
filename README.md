@@ -69,16 +69,14 @@ We are following a [Feature Branch Workflow](https://www.atlassian.com/git/workf
 * Continue making commits, and conversing on the pull request 'til all parties are satisfied with the progress.
 * Once everyone is happy, do the merge/accept the pull request.
 
-#Design
-## Libraries used:
+#Design and Architecture
+###Libraries used:
 * [Mocha](http://visionmedia.github.io/mocha/) for running automated tests.
 * [Should.js](https://github.com/visionmedia/should.js) for nice assertions.
 * [Supertest](https://github.com/visionmedia/supertest) for doing the request tests.
 * [Ember-tools](https://github.com/rpflorence/ember-tools) for building `application.js` and for awesome [generators](https://github.com/rpflorence/ember-tools#generators).
 
-##Architecture
-
-## File Structure
+###File Structure
 * [package.json](package.json) contains all the package dependency information for the project. `npm install` looks at this to figure out what to download/install.
 * [app.js](app.js) is what runs on the server, it's the Node.js/Express.js servercode. If you need to setup a new route
 * [index.html](index.html) is the actual HTML file that gets served up and loads Ember.
@@ -86,7 +84,7 @@ We are following a [Feature Branch Workflow](https://www.atlassian.com/git/workf
 * The models folder contains models which define the DB Schema (eg: [Trip.js](models/Trips.js))
 * The test folder contains the tests which are run if you type `npm test`
 
-####High-level Project Architecture
+###High-level Project Architecture
 
 _Front-end:_ Ember.js (coming soon...), Bootstrap, Jade
 
@@ -96,7 +94,7 @@ _Database:_ MongoDB via the Mongoose Node Package
 
 _iOS:_ XCode and as many CocoPods as possible (will be a seperate repo)
 
-####High-level Data Architecture
+###High-level Data Architecture
 
 _Users:_ name, email, password (salted + hashed)
 
