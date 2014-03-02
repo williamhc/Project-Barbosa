@@ -13,13 +13,35 @@ describe('GET /trips/:badid', function() {
   })
 })
 
-describe('POST /trips', function(){
-  it('should respond with json', function(done){
+describe('POST /trips', function() {
+  it('should respond with json', function(done) {
     request(app)
       .post('/trips')
       .send({trip:{name: "TEST_TRIP"}})
       .set('Accept','application/json')
       .expect('Content-Type', /json/)
       .expect(200, done);
+	})
+});
+
+describe('POST /trips/invalidLocation', function() {
+  it('should return 404', function(done) {
+    request(app)
+      .post('/trips/invalidLocation')
+      .send({trip:{name: "TEST_TRIP2"}})
+      .set('Accept','application/json')
+      .expect('Content-Type', /html/)
+      .expect(404, done);
+	})
+});
+
+describe('POST /api', function() {
+  it('should return 404', function(done) {
+    request(app)
+      .post('/api')
+      .send({trip:{name: "TEST_TRIP3"}})
+      .set('Accept','application/json')
+      .expect('Content-Type', /html/)
+      .expect(404, done);
 	})
 });

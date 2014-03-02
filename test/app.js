@@ -4,8 +4,8 @@ var express = require('express');
 var app = require('../app.js');
 var request = require('supertest');
 
-describe('GET /', function(){
-	it('should be return html', function(done){
+describe('GET /', function() {
+	it('should be return html', function(done) {
 		request(app)
 			.get('/')
 			.expect('Content-Type', /html/)
@@ -13,8 +13,8 @@ describe('GET /', function(){
 	})
 })
 
-describe('GET /NOTHINGHERE', function(){
-	it('should return 404', function(done){
+describe('GET /NOTHINGHERE', function() {
+	it('should return 404', function(done) {
 		request(app)
 			.get('/NOTHINGHERE')
 			.expect('Content-Type', /html/)
