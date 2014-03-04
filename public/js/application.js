@@ -199,7 +199,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', hashTypes, hashContexts, escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("<div id=\"wrap\">\n  <div class=\"navbar navbar-default navbar-fixed-top\">\n    <div class=\"container\">\n      <div class=\"navbar-header\">\n        <button class=\"navbar-toggle\" data-target=\".navbar-collapse\"\n        data-toggle=\"collapse\" type=\"button\"><span class=\"sr-only\">Toggle\n        navigation</span></button><a class=\"navbar-brand\" href=\"/\">Project\n        Barbosa</a>\n      </div>\n\n      <div class=\"collapse navbar-collapse\">\n        <ul class=\"nav navbar-nav\">\n          <li class=\"active\"><a href=\"/\">Home</a></li>\n        </ul>\n\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li><a href=\"/login\">Login</a></li>\n\n          <li><a href=\"/signup\">Create Account</a></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"container\">\n    ");
+  data.buffer.push("<div id=\"wrap\">\n  <div class=\"navbar navbar-default navbar-fixed-top\">\n    <div class=\"container\">\n      <div class=\"navbar-header\">\n        <button class=\"navbar-toggle\" data-target=\".navbar-collapse\"\n        data-toggle=\"collapse\" type=\"button\"><span class=\"sr-only\">Toggle\n        navigation</span></button><a class=\"navbar-brand\" href=\"/\">Project\n        Barbosa</a>\n      </div>\n\n      <div class=\"collapse navbar-collapse\">\n        <ul class=\"nav navbar-nav\">\n          <li class=\"active\"><a href=\"/\">Home</a></li>\n        </ul>\n\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li><a href=\"#login\">Login</a></li>\n\n          <li><a href=\"#signup\">Create Account</a></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"container\">\n    ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
@@ -249,7 +249,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   
 
 
-  data.buffer.push("<h2>Login Test</h2>\n\n");
+  data.buffer.push("<div class container=\"col-sm-8 col-sm-offset-2\">\n  <form method=\"POST\" action=\"#login\">\n    <legend>Login</legend>\n    <div class=\"form-group\">\n      <div class=\"btn-group btn-group-justified\">\n        <a href=\"/auth/facebook\" class=\"btn btn-facebook\"><i class=\"fa fa-facebook\"></i>Facebook</a>\n        <a href=\"/auth/twitter\" class=\"btn btn-twitter\"><i class=\"fa fa-twitter\"></i>Twitter</a>\n        <a href=\"/auth/google\" class=\"btn btn-google-plus\"><i class=\"fa fa-google-plus\"></i>Google</a>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"email\" class=\"control-label\">Email</label>\n      <input type=\"text\" name=\"email\" id=\"email\" placeholder=\"Email\" autofocus=\"\" class=\"form-control\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"username\" class=\"control-label\">Password</label>\n      <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" class=\"form-control\">\n    </div>\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-primary\"><i class=\"fa fa-unlock-alt\"></i>Login</button>\n    </div>\n  </form>\n</div>");
   
 });
 
