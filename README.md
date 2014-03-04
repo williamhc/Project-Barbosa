@@ -27,7 +27,7 @@ Note: You may need to sudo npm install commands that use the -g flag.
 
 ##Run app
 1. Start the Node Server `npm start` (uses `ember build && nodemon app.js` so we don't have to worry about using multiple commands. However for debugging you may want to manually use `node-inspector app.js` with `ember build -w`)
-2. Start mongo `mongod`
+2. Start mongo `mongod` (Unless you're on Linux it seems.)
 3. Go to the site that Node says it's running. Default: `localhost:3000`
 
 ##Run tests
@@ -40,6 +40,7 @@ _Note_: "Pending" tests simply have a stub and need to be filled out. Normally w
 * Protip: Use `mocha --reporter landing` to have a fun looking reporter.
 * Node-inspector can be used as a debugger, make sure to use the debug flag
 'nodemon --debug app.js' Then in a new terminal run 'node-inspector' to start the debugger and open the link provided by the terminal to view the debugger. It should be a webpage with the Inspector from Chrome.
+
 
 * If you're missing a package run `npm install` and it'll download them for you. Watch out for this when new branches are merged into master!
 
