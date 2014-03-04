@@ -150,6 +150,7 @@ var NewTripRoute = Ember.Route.extend({
       model.deleteRecord();
     }
   }
+
 });
 
 module.exports = NewTripRoute;
