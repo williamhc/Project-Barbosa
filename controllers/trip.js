@@ -100,13 +100,3 @@ exports.createTrip = function(req, res) {
   });
   res.json({trip:trip})
 };
-
-exports.testLogin = function(req, res) {
-  if(req.user) {
-    res.json({loggedin: true});
-    console.log('logged in');
-  } else {
-    res.json({loggedin: false});
-    console.log('not logged in');
-  }
-}

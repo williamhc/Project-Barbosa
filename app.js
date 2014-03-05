@@ -85,7 +85,6 @@ app.get('/logout', userController.logout);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 
-app.get('/trips/testLogin', tripController.testLogin);
 app.post('/trips', tripController.createTrip);
 app.get( '/trips', tripController.listTrips);
 app.get( '/trips/:tripid', tripController.showTrip);
