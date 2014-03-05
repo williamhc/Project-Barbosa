@@ -12,7 +12,7 @@ App = Ember.Application.create({
   LOG_TRANSITIONS: true
 });
 
-var AuthenticatorController = module.exports.AuthenticatorController;
+var AuthenticatorController = require('../controllers/authenticator_controller');
 
 App.initializer({
   name: 'authentication',
@@ -35,7 +35,7 @@ App.Store = require('./store'); // delete if you don't want ember-data
 module.exports = App;
 
 
-},{"../vendor/ember":17,"../vendor/ember-data":15,"../vendor/ember-simple-auth":16,"../vendor/handlebars":18,"../vendor/jquery":19,"./store":3}],2:[function(require,module,exports){
+},{"../controllers/authenticator_controller":4,"../vendor/ember":17,"../vendor/ember-data":15,"../vendor/ember-simple-auth":16,"../vendor/handlebars":18,"../vendor/jquery":19,"./store":3}],2:[function(require,module,exports){
 var App = require('./app');
 
 App.Router.map(function() {
@@ -129,14 +129,13 @@ var LoginController = Ember.Controller.extend(Ember.SimpleAuth.AuthenticationCon
   isProcessing: false,
 
   actions: {
-
+    // Called via form submit
     authenticate: function() {
-      console.log('authenticate');
-      var options = {
+      var credentials = {
         email: this.email,
         password: this.password
       };
-      this._super(options);
+      this._super(credentials);
     },
 
     // display an error when logging in fails
