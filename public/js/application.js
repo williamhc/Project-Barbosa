@@ -6,25 +6,56 @@ require('../vendor/jquery');
 require('../vendor/handlebars');
 require('../vendor/ember');
 require('../vendor/ember-data'); // delete if you don't want ember-data
-require('../vendor/ember-simple-auth');
-
-Ember.Application.initializer({
-  name: 'authentication',
-  initialize: function(container, application) {
-    Ember.SimpleAuth.setup(container, application, {
-      authorizer: App.MyCustomAuthorizer
-    });
-  }
-});
+require('../vendor/ember-simple-auth'); //for login
 
 App = Ember.Application.create({
   LOG_TRANSITIONS: true
 });
 
+var CustomAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
+  restore: function(properties) {
+    console.log('restore called:');
+    console.log(properties);
+  },
+  authenticate: function(credentials) {
+    console.log('auth called with options');
+    console.log(credentials);
+    var _this = this;
+    
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      $.post("/login", credentials).done(function(data) {
+        console.log(data);
+
+        if(data.loggedIn) {
+          resolve(data);
+        } else {
+          reject(data);
+        }
+
+        //resolve({loggedin: true});
+      });
+    });
+  },
+  invalidate: function() {
+    console.log('invalidate called');
+  }
+});
+
+App.initializer({
+  name: 'authentication',
+  initialize: function(container, application) {
+    container.register('app:authenticators:custom', CustomAuthenticator);
+    Ember.SimpleAuth.setup(container, application, {
+      store: Ember.SimpleAuth.Stores.Cookie
+    });
+  }
+});
+
+App.ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteMixin);
+
 App.ApplicationSerializer = DS.RESTSerializer.extend({
   primaryKey: function(){return '_id'},
 });
-
 
 App.Store = require('./store'); // delete if you don't want ember-data
 
@@ -84,8 +115,8 @@ module.exports = EditTripController;
 
 
 },{}],5:[function(require,module,exports){
-var LoginController = Ember.ObjectController.extend({
-
+var LoginController = Ember.Controller.extend(Ember.SimpleAuth.AuthenticationControllerMixin, {
+  authenticator: 'app:authenticators:custom',
   email: '',
   password: '',
 
@@ -93,6 +124,16 @@ var LoginController = Ember.ObjectController.extend({
   isProcessing: false,
 
   actions: {
+
+    authenticate: function() {
+      console.log('authenticate');
+      var options = {
+        email: this.email,
+        password: this.password
+      };
+      this._super(options);
+    },
+
     loginEmail: function() {
 
       this.loginFailed = false;
@@ -166,14 +207,13 @@ App.Trip = require('./models/trip');
 App.LoginRoute = require('./routes/login_route');
 App.NewTripRoute = require('./routes/new_trip_route');
 App.TripsRoute = require('./routes/trips_route');
-App.LoginView = require('./views/login_view');
 
 require('./config/routes');
 
 module.exports = App;
 
 
-},{"./config/app":1,"./config/routes":2,"./controllers/edit_trip_controller":4,"./controllers/login_controller":5,"./controllers/new_trip_controller":6,"./controllers/trip_controller":7,"./models/trip":9,"./routes/login_route":10,"./routes/new_trip_route":11,"./routes/trips_route":12,"./templates":13,"./views/login_view":19}],9:[function(require,module,exports){
+},{"./config/app":1,"./config/routes":2,"./controllers/edit_trip_controller":4,"./controllers/login_controller":5,"./controllers/new_trip_controller":6,"./controllers/trip_controller":7,"./models/trip":9,"./routes/login_route":10,"./routes/new_trip_route":11,"./routes/trips_route":12,"./templates":13}],9:[function(require,module,exports){
 var Trip = DS.Model.extend({
 
   "name": DS.attr('string'),
@@ -277,10 +317,37 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 Ember.TEMPLATES['index'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  
+  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, self=this;
 
+function program1(depth0,data) {
+  
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n  <a ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "invalidateSession", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">Logout</a>\n");
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n  <a ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "authenticateSession", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">Login</a>\n");
+  return buffer;
+  }
 
   data.buffer.push("<h2>Index</h2>\n\n");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers['if'].call(depth0, "session.isAuthenticated", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n");
+  return buffer;
   
 });
 
@@ -293,7 +360,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   data.buffer.push("<div class container=\"col-sm-8 col-sm-offset-2\">\n  <form ");
   hashContexts = {'on': depth0};
   hashTypes = {'on': "STRING"};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "loginEmail", {hash:{
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "authenticate", {hash:{
     'on': ("submit")
   },contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(">\n    <legend>Login</legend>\n    <div class=\"form-group\">\n      <div class=\"btn-group btn-group-justified\">\n        <a href=\"/auth/facebook\" class=\"btn btn-facebook\"><i class=\"fa fa-facebook\"></i>Facebook</a>\n        <a href=\"/auth/twitter\" class=\"btn btn-twitter\"><i class=\"fa fa-twitter\"></i>Twitter</a>\n        <a href=\"/auth/google\" class=\"btn btn-google-plus\"><i class=\"fa fa-google-plus\"></i>Google</a>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"email\" class=\"control-label\">Email</label>\n      ");
@@ -323,7 +390,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   data.buffer.push("\n    </div>\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-primary\" ");
   hashTypes = {};
   hashContexts = {};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "loginEmail", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "authenticate", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("><i class=\"fa fa-unlock-alt\"></i>Login</button>\n    </div>\n  </form>\n</div>");
   return buffer;
   
@@ -58579,13 +58646,5 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 }
 
 })( window );
-},{}],19:[function(require,module,exports){
-var LoginView = Ember.View.extend({
-
-});
-
-module.exports = LoginView;
-
-
 },{}]},{},[8])
 ;
